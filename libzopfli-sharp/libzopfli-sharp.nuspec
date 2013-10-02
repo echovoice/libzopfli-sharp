@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>libzopfli-sharp</id>
+    <version>$version$</version>
+    <title>A C# wrapper for the Zopfli Compression Algorithm</title>
+    <authors>echovoice,artfulhacker</authors>
+    <owners>echovoice,artfulhacker</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/echovoice/libzopfli-sharp</projectUrl>
+    <licenseUrl>https://github.com/echovoice/libzopfli-sharp/blob/master/LICENSE</licenseUrl>
+    <description>Zopfli Compression Algorithm is a new zlib (gzip, deflate) compatible compressor. This compressor takes more time (~100x slower), but compresses around 5% better than zlib and better than any other zlib-compatible compressor we have found.</description>
+    <releaseNotes>This is the initial commit of libzopfli-sharp.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <language>en-US</language>
+    <tags>Echovoice Zopfli PNG Compression ZLIB GZIP DEFLATE</tags>
+  </metadata>
+  <files>
+    <file src="tools\install.ps1" target="tools" />
+    <file src="tools\uninstall.ps1" target="tools" />
+    <file src="tools\GetZopfliPostBuildCmd.ps1" target="tools" />
+    <file src="libzopfli-sharp.dll" target="lib\net40" />
+    <file src="libzopfli-sharp.pdb" target="lib\net40" />
+    <file src="libzopfli-sharp.xml" target="lib\net40" />
+    <file src="amd64\zopfli.dll" target="NativeBinaries\amd64\zopfli.dll" />
+    <file src="x86\zopfli.dll" target="NativeBinaries\x86\zopfli.dll" />
+  </files>
+</package>

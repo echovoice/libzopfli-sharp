@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace LibZopfliSharp
 {
+    /// <summary>
+    /// Access to native lib from c#
+    /// </summary>
     public static class NativeUtilities
     {
         /// <summary>

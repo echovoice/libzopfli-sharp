@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace LibZopfliSharp
 {
+    /// <summary>
+    /// Zopfli PNG Compression Extensions
+    /// </summary>
     public static class ZopfliPNG
     {
         /// <summary>

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace LibZopfliSharp.Native
 {
+    /// <summary>
+    /// x86 Native Hooks
+    /// </summary>
     public class ZopfliPNGCompressor32
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace LibZopfliSharp.Native
         public static extern int ZopfliPNGExternalOptimize(byte[] datain, int datainsize, ref IntPtr dataout);
     }
 
+    /// <summary>
+    /// x64 Native Hooks
+    /// </summary>
     public class ZopfliPNGCompressor64
     {
         /// <summary>

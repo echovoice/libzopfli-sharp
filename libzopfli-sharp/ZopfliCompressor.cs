@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace LibZopfliSharp.Native
 {
+    /// <summary>
+    /// x86 Zopfli Compressor Hooks
+    /// </summary>
     public class ZopfliCompressor32
     {
         /// <summary>
@@ -24,6 +27,9 @@ namespace LibZopfliSharp.Native
         public static extern void ZopfliCompress(ref ZopfliOptions options, ZopfliFormat output_type, byte[] data, int data_size, ref IntPtr data_out, ref UIntPtr data_out_size);
     }
 
+    /// <summary>
+    /// x64 Zopfli Compressor Hooks
+    /// </summary>
     public class ZopfliCompressor64
     {
         /// <summary>

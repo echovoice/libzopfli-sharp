@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace LibZopfliSharp
 {
+    /// <summary>
+    /// Zopfli format options
+    /// </summary>
     public enum ZopfliFormat
     {
         ZOPFLI_FORMAT_GZIP,
@@ -14,6 +17,9 @@ namespace LibZopfliSharp
         ZOPFLI_FORMAT_DEFLATE
     };
 
+    /// <summary>
+    /// Zopfli Options
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class ZopfliOptions
     {
