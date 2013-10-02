@@ -146,3 +146,9 @@ public class ZopfliOptions
     public Int32 blocksplittingmax;
 }
 ```
+
+Credit
+==========
+Zopfli was written by Jyrki Alakuijala, Ph.D. and Lode Vandevenne, M.Sc. from Google Inc.
+You will find the projects homepage here: http://code.google.com/p/zopfli/
+and the whitepaper here: http://code.google.com/p/zopfli/downloads/detail?name=Data_compression_using_Zopfli.pdf.
