@@ -1,4 +1,4 @@
-zopfli-sharp
+zopfli-sharp ![project-status](http://stillmaintained.com/echovoice/libzopfli-sharp.png)
 ============
 
 A C# wrapper for the Zopfli Compression Algorithm
