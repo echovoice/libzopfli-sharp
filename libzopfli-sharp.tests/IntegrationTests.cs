@@ -65,6 +65,22 @@ namespace LibZopfliSharp.Tests
         }
 
         [Test]
+        public void testFaviconGzipCompress()
+        {
+            byte[] uncompressed = File.ReadAllBytes("files/favicon.ico");
+            int before = uncompressed.Length;
+
+            byte[] compressed;
+            int after = 0;
+
+            compressed = Zopfli.compress(uncompressed, ZopfliFormat.ZOPFLI_FORMAT_GZIP);
+            after = compressed.Length;
+
+            after.Should().NotBe(30);
+            before.Should().BeGreaterThan(after);
+        }
+        
+        [Test]
         public void testGzipStream()
         {
             // make sure compression works, file should be smaller

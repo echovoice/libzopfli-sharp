@@ -4,7 +4,7 @@
     <id>libzopfli-sharp</id>
     <version>$version$</version>
     <title>A C# wrapper for the Zopfli Compression Algorithm</title>
-    <authors>echovoice,artfulhacker</authors>
+    <authors>Echovoice</authors>
     <owners>echovoice,artfulhacker</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/echovoice/libzopfli-sharp</projectUrl>
