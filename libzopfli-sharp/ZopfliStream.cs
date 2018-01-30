@@ -13,19 +13,14 @@ namespace LibZopfliSharp
         private bool _CanWrite = true;
         private ZopfliFormat type;
         private ZopfliOptions options;
+        private bool leaveOpen;
 
         public ZopfliStream(Stream inner)
         {
             _innerStream = inner;
             type = ZopfliFormat.ZOPFLI_FORMAT_DEFLATE;
             options = new ZopfliOptions();
-        }
-
-        public ZopfliStream(Stream inner, ZopfliFormat type, ZopfliOptions options)
-        {
-            _innerStream = inner;
-            this.type = type;
-            this.options = options;
+            this.leaveOpen = false;
         }
 
         public ZopfliStream(Stream inner, ZopfliFormat type)
@@ -33,6 +28,31 @@ namespace LibZopfliSharp
             _innerStream = inner;
             this.type = type;
             options = new ZopfliOptions();
+            this.leaveOpen = false;
+        }
+
+        public ZopfliStream(Stream inner, ZopfliFormat type, bool leaveOpen)
+        {
+            _innerStream = inner;
+            this.type = type;
+            options = new ZopfliOptions();
+            this.leaveOpen = leaveOpen;
+        }
+
+        public ZopfliStream(Stream inner, ZopfliFormat type, ZopfliOptions options)
+        {
+            _innerStream = inner;
+            this.type = type;
+            this.options = options;
+            this.leaveOpen = false;
+        }
+
+        public ZopfliStream(Stream inner, ZopfliFormat type, ZopfliOptions options, bool leaveOpen)
+        {
+            _innerStream = inner;
+            this.type = type;
+            this.options = options;
+            this.leaveOpen = leaveOpen;
         }
 
         public override bool CanRead
@@ -94,7 +114,8 @@ namespace LibZopfliSharp
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            _innerStream.Dispose();
+            if (!leaveOpen)
+                _innerStream.Dispose();
             options = null;
         }
     }
