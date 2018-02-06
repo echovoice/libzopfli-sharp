@@ -26,7 +26,8 @@ namespace LibZopfliSharp.Tests
         public void testDeflateStream()
         {
             // make sure compression works, file should be smaller
-            byte[] uncompressed = File.ReadAllBytes("files/fp.log");
+            string sample = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "files", "fp.log");
+            byte[] uncompressed = File.ReadAllBytes(sample);
             int before = uncompressed.Length;
             byte[] compressed;
             int after = 0;
@@ -67,7 +68,8 @@ namespace LibZopfliSharp.Tests
         [Test]
         public void testFaviconGzipCompress()
         {
-            byte[] uncompressed = File.ReadAllBytes("files/favicon.ico");
+            string sample = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "files", "favicon.ico");
+            byte[] uncompressed = File.ReadAllBytes(sample);
             int before = uncompressed.Length;
 
             byte[] compressed;
@@ -79,12 +81,39 @@ namespace LibZopfliSharp.Tests
             after.Should().NotBe(30);
             before.Should().BeGreaterThan(after);
         }
-        
+
+        [Test]
+        public void testFaviconGZipStreamCompress()
+        {
+            string sample = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "files", "favicon.ico");
+            byte[] uncompressed = File.ReadAllBytes(sample);
+            int before = uncompressed.Length;
+
+            int after = 0;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (ZopfliStream zs = new ZopfliStream(ms, ZopfliFormat.ZOPFLI_FORMAT_GZIP, true))
+                {
+                    zs.Write(uncompressed, 0, uncompressed.Length);
+                }
+
+                // Test if MemoryStream is still leaved open
+                ms.Position = 0;
+                byte[] compressed = ms.ToArray();
+                ms.Length.Should().Equals(compressed.Length);
+                after = compressed.Length;
+            }
+            
+            after.Should().NotBe(30);
+            before.Should().BeGreaterThan(after);
+        }
+
         [Test]
         public void testGzipStream()
         {
             // make sure compression works, file should be smaller
-            byte[] uncompressed = File.ReadAllBytes("files/fp.log");
+            string sample = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "files", "fp.log");
+            byte[] uncompressed = File.ReadAllBytes(sample);
             int before = uncompressed.Length;
             byte[] compressed;
             int after = 0;
@@ -127,7 +156,8 @@ namespace LibZopfliSharp.Tests
         public void testZlibStream()
         {
             // make sure compression works, file should be smaller
-            byte[] uncompressed = File.ReadAllBytes("files/fp.log");
+            string sample = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "files", "fp.log");
+            byte[] uncompressed = File.ReadAllBytes(sample);
             int before = uncompressed.Length;
             byte[] compressed;
             int after = 0;
