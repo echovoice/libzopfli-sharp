@@ -53,9 +53,9 @@ namespace LibZopfliSharp
 
                 // Compress the data via native methods
                 if (Environment.Is64BitProcess)
-                    ZopfliCompressor64.ZopfliCompress(ref options, type, data_in, data_in.Length, ref result, ref result_size);
+                    ZopfliCompressor64.ZopfliCompress(options, type, data_in, data_in.Length, ref result, ref result_size);
                 else
-                    ZopfliCompressor32.ZopfliCompress(ref options, type, data_in, data_in.Length, ref result, ref result_size);
+                    ZopfliCompressor32.ZopfliCompress(options, type, data_in, data_in.Length, ref result, ref result_size);
 
                 // Copy data back to managed memory and return
                 return NativeUtilities.GetDataFromUnmanagedMemory(result, (int)result_size);
