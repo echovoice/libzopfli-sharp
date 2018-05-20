@@ -67,7 +67,10 @@ namespace LibZopfliSharp
             finally
             {
                 // Free unmanaged memory
-                Marshal.FreeHGlobal(result);
+                if (Environment.Is64BitProcess)
+                    ZopfliCompressor64.ZopfliFree(result);
+                else
+                    ZopfliCompressor32.ZopfliFree(result);
             }
         }
     }
