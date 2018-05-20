@@ -25,6 +25,13 @@ namespace LibZopfliSharp.Native
         /// <param name="data_out_size">This is the size of the memory block pointed to by the dynamic output array size</param>
         [DllImport("x86\\zopfli.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ZopfliCompress(ref ZopfliOptions options, ZopfliFormat output_type, byte[] data, int data_size, ref IntPtr data_out, ref UIntPtr data_out_size);
+
+        /// <summary>
+        /// Frees memory allocated by the native Zopfli library.
+        /// </summary>
+        /// <param name="mem">Pointer to the unmanaged memory to free</param>
+        [DllImport("x86\\zopfli.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ZopfliFree(IntPtr mem);
     }
 
     /// <summary>
@@ -43,5 +50,12 @@ namespace LibZopfliSharp.Native
         /// <param name="data_out_size">This is the size of the memory block pointed to by the dynamic output array size</param>
         [DllImport("amd64\\zopfli.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ZopfliCompress(ref ZopfliOptions options, ZopfliFormat output_type, byte[] data, int data_size, ref IntPtr data_out, ref UIntPtr data_out_size);
+
+        /// <summary>
+        /// Frees memory allocated by the native Zopfli library.
+        /// </summary>
+        /// <param name="mem">Pointer to the unmanaged memory to free</param>
+        [DllImport("amd64\\zopfli.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ZopfliFree(IntPtr mem);
     }
 }
